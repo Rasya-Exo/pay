@@ -1,0 +1,933 @@
+<!DOCTYPE html>
+<script>
+    const CONTACT_DATA = {
+        /* UBAH QRIS, NOMOR, LOGO */
+        qrisLink: "https://c.termai.cc/i67/3URP.jpg", 
+        groupLink: "https://chat.whatsapp.com/EDKAEburJ5737bdsoI8P7a?mode=ems_copy_t",
+        channelLink: "https://whatsapp.com/channel/0029VatrGPd3bbV0xGGn3X0z",
+        danaNumber: "083133092108",
+        danaName: "U** UNA***",
+        ovoNumber: "083101950613",
+        ovoName: "Rasya",
+        gopayNumber: "083101950613",
+        gopayName: "Rasya",
+        logoUrl: "https://c.termai.cc/i24/GkBkqMc.jpg" // Ganti URL foto profil di halaman depan
+    };
+</script>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PAYMENT PAPIH RASYA</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    
+    <style>
+        /* Definisi Warna Neon */
+        :root {
+            --neon-purple-main: #ce00ff;
+            --neon-purple-secondary: #e600ff;
+            --dark-background: #111111;
+            --dark-card: #1e1e1e;
+            --lightning-color: #ffffff; 
+            --neon-yellow: #fff200; 
+            --neon-green: #39ff14; 
+            --neon-blue: #00bfff; 
+            --neon-red: #ff3366;
+        }
+        
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: var(--dark-background); 
+            background-image: radial-gradient(circle at center, rgba(10, 0, 30, 0.7) 0%, rgba(0, 0, 0, 0.95) 100%);
+            display: flex;
+            justify-content: center;
+            align-items: center; 
+            min-height: 100vh; 
+            padding: 20px;
+            position: relative;
+            overflow-y: auto; 
+        }
+        
+        /* CONTAINER UTAMA */
+        .main-container {
+            background: var(--dark-card);
+            border-radius: 25px; 
+            padding: 40px;
+            width: 100%;
+            max-width: 480px;
+            box-shadow: 0 0 30px rgba(206, 0, 255, 0.4), 0 0 10px rgba(0, 0, 0, 0.5);
+            border: 1px solid var(--neon-purple-main);
+            position: relative; 
+            z-index: 2; 
+            transition: opacity 0.5s ease-in; 
+            margin: auto;
+        }
+
+        /* --- STYLING GATE SCREEN --- */
+        #gate-screen {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(17, 17, 17, 0.95); 
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 100; 
+            opacity: 1;
+            transition: opacity 0.5s ease-out;
+            cursor: pointer; 
+            overflow: hidden; 
+        }
+
+        #gate-box {
+            background: #2a2a2a;
+            padding: 30px;
+            border-radius: 15px;
+            text-align: center;
+            border: 2px solid var(--neon-purple-secondary);
+            box-shadow: 0 0 25px rgba(230, 0, 255, 0.7);
+            max-width: 90%;
+            animation: pulseGate 1.5s infinite alternate;
+            position: relative; 
+            pointer-events: none; 
+        }
+
+        @keyframes pulseGate {
+            0% { transform: scale(1); box-shadow: 0 0 20px rgba(230, 0, 255, 0.5); }
+            100% { transform: scale(1.03); box-shadow: 0 0 30px rgba(230, 0, 255, 1); }
+        }
+        
+        /* GAYA UMUM */
+        .profile-pic-container { margin-bottom: 25px; display: inline-block; position: relative; box-shadow: 0 0 10px var(--neon-purple-secondary), 0 0 20px var(--neon-purple-main), 0 0 30px var(--neon-purple-secondary); border-radius: 50%; }
+        .profile-pic { width: 120px; height: 120px; border-radius: 50%; object-fit: cover; border: 5px solid var(--neon-purple-main); }
+        #enter-button { padding: 15px 30px; margin-top: 20px; font-size: 1.1rem; font-weight: 700; background: var(--neon-purple-secondary); color: var(--dark-background); border: none; border-radius: 10px; cursor: pointer; transition: all 0.3s; box-shadow: 0 0 15px var(--neon-purple-secondary); pointer-events: auto; }
+        #enter-button:hover { transform: scale(1.05); background: #ff00ff; }
+        
+        /* PERBAIKAN FINAL UNTUK TOMBOL UTAMA (Pembayaran, Info Grup, Game Santai) */
+        .main-options { 
+            display: grid; 
+            /* minmax(0, 1fr) memastikan kolom dapat menyusut dan tidak overflow */
+            grid-template-columns: repeat(3, minmax(0, 1fr)); 
+            gap: 5px; 
+            margin-bottom: 30px; 
+            background: #2a2a2a; 
+            border-radius: 15px; 
+            padding: 5px; 
+            border: 1px solid #333; 
+        }
+        
+        .option-btn { 
+            padding: 15px 5px; 
+            border: none; 
+            border-radius: 12px; 
+            background: transparent; 
+            color: #aaaaaa; 
+            font-weight: 700; 
+            cursor: pointer; 
+            transition: all 0.3s; 
+            font-size: 0.95rem; 
+            /* Hapus white-space: nowrap; agar teks bisa wrap di layar kecil */
+            text-align: center; /* Pastikan teks tetap di tengah */
+        }
+        
+        .option-btn.active { background: var(--neon-purple-secondary); color: var(--dark-background); box-shadow: 0 0 12px var(--neon-purple-secondary); transform: translateY(-2px); }
+        .main-content { display: none; animation: fadeInSmooth 0.5s ease-out; }
+        .main-content.active { display: block; }
+        .neon-text { color: #fff; text-shadow: 0 0 5px var(--neon-purple-main), 0 0 10px var(--neon-purple-main), 0 0 20px var(--neon-purple-main); }
+        .payment-title { text-align: center; color: var(--neon-purple-secondary); margin-bottom: 30px; font-weight: 700; letter-spacing: 1px; text-shadow: 0 0 8px var(--neon-purple-secondary), 0 0 15px var(--neon-purple-secondary); font-size: 1.8rem; }
+        .method-title { color: var(--neon-purple-secondary); font-size: 1.6rem; margin-bottom: 10px; border-bottom: 2px solid var(--neon-purple-secondary); padding-bottom: 5px; text-shadow: 0 0 5px var(--neon-purple-secondary); }
+        .description { color: #ccc; margin-bottom: 20px; }
+        .footer-note { text-align: center; margin-top: 30px; padding-top: 15px; border-top: 1px dashed #333; color: #555; font-size: 0.8rem; }
+        .whatsapp-button { width: 100%; padding: 18px; margin: 15px 0; background: #25D366; color: white; border: none; border-radius: 10px; cursor: pointer; font-size: 1.1rem; font-weight: 700; box-shadow: 0 4px 15px rgba(37, 211, 102, 0.4); transition: all 0.3s; text-decoration: none; display: flex; align-items: center; justify-content: center; }
+        .whatsapp-icon { margin-right: 10px; font-size: 1.3em; }
+
+        /* GAYA TAB */
+        .tab-menu { display: flex; justify-content: space-around; margin-bottom: 30px; background: #2a2a2a; border-radius: 15px; padding: 5px; border: 1px solid #333; }
+        .tab-btn { flex-grow: 1; padding: 12px 10px; border: none; border-radius: 12px; background: transparent; color: #aaaaaa; font-weight: 600; cursor: pointer; transition: all 0.3s; }
+        .tab-btn.active { background: var(--neon-purple-main); color: var(--dark-background); box-shadow: 0 0 10px var(--neon-purple-main); transform: scale(1.05); }
+        .tab-content { display: none; padding: 15px 0; animation: fadeInSmooth 0.6s ease-out; }
+        .tab-content.active { display: block; }
+        @keyframes fadeInSmooth { from { opacity: 0; transform: translateY(15px); } to { opacity: 1; transform: translateY(0); } }
+
+        /* GAYA AKUN INFO & SALIN */
+        .account-info { display: flex; justify-content: space-between; align-items: center; background: #2a2a2a; padding: 15px; border-radius: 10px; border: 1px solid #444; margin-bottom: 10px; }
+        .number-details { flex-grow: 1; color: #fff; }
+        .number-details .label { display: block; font-size: 0.8rem; color: #aaa; }
+        .number-details .number { 
+            font-size: 1.5rem; 
+            font-weight: 700; 
+            color: var(--neon-purple-secondary); 
+            text-shadow: 0 0 5px var(--neon-purple-main); 
+            display: block; 
+            margin-top: -3px; 
+        }
+        .number-details .account-name { font-size: 0.9rem; color: #888; margin-top: 5px; }
+        .copy-btn { padding: 10px 15px; background: var(--neon-purple-main); color: var(--dark-background); border: none; border-radius: 8px; font-weight: 600; cursor: pointer; transition: background 0.2s; white-space: nowrap; }
+        .copy-btn:hover { background: #ff00ff; }
+        
+        /* QRIS & WARNING */
+        .qris-box { text-align: center; margin: 20px auto 30px; padding: 25px; background: #2a2a2a; border: 2px solid var(--neon-purple-main); border-radius: 15px; box-shadow: 0 0 15px rgba(206, 0, 255, 0.5); }
+        .qris-image { width: 100%; max-width: 280px; height: auto; border-radius: 8px; box-shadow: 0 0 10px var(--neon-purple-main); }
+        .qris-hint { margin-top: 15px; font-size: 0.9rem; color: #888; font-style: italic; }
+        .warning { color: #ff3366; font-size: 0.9rem; margin-top: 10px; margin-bottom: 20px; font-weight: 600; text-shadow: 0 0 3px #ff3366; }
+        
+        /* GAYA COPY BUTTON KHUSUS QRIS */
+        .copy-button { width: 100%; padding: 12px; background: var(--neon-blue); color: var(--dark-background); border: none; border-radius: 8px; cursor: pointer; font-weight: 700; transition: background 0.2s; }
+        .copy-button:hover { background: #66ccff; }
+
+        /* GAYA NOTIFIKASI SALIN */
+        #copy-notification { position: fixed; top: 20px; right: 20px; background-color: var(--neon-green); color: var(--dark-background); padding: 10px 20px; border-radius: 10px; z-index: 1000; box-shadow: 0 0 15px rgba(57, 255, 20, 0.8); opacity: 0; transform: translateY(-50px); transition: opacity 0.3s ease-out, transform 0.3s ease-out; font-weight: 600; }
+        #copy-notification.show { opacity: 1; transform: translateY(0); }
+
+        /* GAYA GAME */
+        .game-card { background: #222; border-radius: 15px; padding: 20px; margin-bottom: 20px; box-shadow: 0 0 10px rgba(0, 0, 0, 0.5); border: 1px solid #333; }
+        .quiz-question { font-size: 1.1rem; font-weight: 600; color: var(--neon-blue); margin-bottom: 15px; text-shadow: 0 0 5px var(--neon-blue); }
+        .quiz-result, .math-result { font-size: 1.2rem; font-weight: 700; margin-top: 15px; text-align: center; }
+        
+        /* GAYA KUIS OPSI JAWABAN (PERBAIKAN BUG OVERFLOW) */
+        .quiz-options {
+            display: grid;
+            /* Perbaikan: minmax(0, 1fr) mencegah overflow dan memastikan lebar yang adil */
+            grid-template-columns: repeat(3, minmax(0, 1fr)); 
+            gap: 10px;
+            margin-top: 15px;
+        }
+
+        .quiz-options button {
+            padding: 12px 5px;
+            background: #333;
+            color: #ccc;
+            border: 1px solid #555;
+            border-radius: 8px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-size: 0.9rem;
+            /* Memungkinkan teks wrap */
+            text-align: center; 
+            box-shadow: 0 0 3px rgba(0, 0, 0, 0.5);
+        }
+
+        .quiz-options button:hover:not(.correct):not(.incorrect) {
+            background: #444;
+            border-color: var(--neon-blue);
+            color: var(--neon-blue);
+            box-shadow: 0 0 8px rgba(0, 191, 255, 0.7);
+        }
+
+        .quiz-options button.correct {
+            background: var(--neon-green);
+            color: var(--dark-background);
+            box-shadow: 0 0 15px var(--neon-green);
+            border-color: var(--neon-green);
+            pointer-events: none; 
+        }
+
+        .quiz-options button.incorrect {
+            background: var(--neon-red);
+            color: white;
+            box-shadow: 0 0 15px var(--neon-red);
+            border-color: var(--neon-red);
+            pointer-events: none;
+        }
+
+        /* GAYA MATEMATIKA */
+        .math-input { width: 100%; padding: 12px; margin: 10px 0; border-radius: 8px; border: 2px solid var(--neon-green); background: #111; color: #fff; font-size: 1.5rem; text-align: center; font-weight: 700; }
+        .math-question { font-size: 2rem; font-weight: 700; color: var(--neon-green); text-shadow: 0 0 5px var(--neon-green); margin-bottom: 10px; text-align: center; }
+        .math-score-board { display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px; padding: 0 10px; font-size: 1rem; color: #ccc; }
+        .math-score-board span { 
+            font-weight: 700; 
+            color: var(--neon-purple-secondary); 
+            text-shadow: 0 0 3px var(--neon-purple-main);
+        }
+        .math-submit-btn { width: 100%; padding: 12px; background: var(--neon-green); color: var(--dark-background); border: none; border-radius: 8px; cursor: pointer; font-weight: 700; transition: background 0.2s; box-shadow: 0 0 10px rgba(57, 255, 20, 0.7); }
+        #final-math-score {
+            font-size: 3rem; 
+            font-weight: 700; 
+            color: var(--neon-purple-secondary); 
+            text-shadow: 0 0 10px var(--neon-purple-main);
+        }
+        
+        /* GAYA KHUSUS KUIS 40 SOAL */
+        .quiz-score-board {
+            display: flex; 
+            justify-content: space-between; 
+            align-items: center; 
+            margin-bottom: 15px; 
+            padding: 0 10px; 
+            font-size: 1rem; 
+            color: #ccc;
+            border-bottom: 1px dashed #444;
+            padding-bottom: 10px;
+        }
+        .quiz-score-board span {
+            font-weight: 700; 
+            color: var(--neon-blue); 
+            text-shadow: 0 0 3px var(--neon-blue);
+        }
+        #quiz-game-finished {
+            text-align: center;
+        }
+        #final-quiz-score {
+            font-size: 3rem; 
+            font-weight: 700; 
+            color: var(--neon-blue);
+            text-shadow: 0 0 10px var(--neon-blue);
+        }
+        .quiz-game-reset-btn {
+            width: 100%; padding: 12px; background: var(--neon-blue); color: var(--dark-background); border: none; border-radius: 8px; cursor: pointer; font-weight: 700; transition: background 0.2s; margin-top: 20px;
+        }
+        
+    </style>
+    
+    </head>
+<body>
+    
+    <div id="lightning-overlay"></div> 
+    <div id="rain-canvas"></div> 
+    
+    <div id="gate-screen">
+        <div id="gate-box">
+            <div class="profile-pic-container">
+                <img src="#" alt="Logo Toko Papih Rasya" class="profile-pic" id="profile-pic">
+            </div>
+            
+            <h2 class="neon-text" style="font-size: 1.8rem; margin-bottom: 10px;">Masuk untuk Pembayaran</h2>
+            <p style="color: #ccc;">Tekan tombol di bawah untuk melihat detail transaksi dan grup.</p>
+            <button id="enter-button">
+                <i class="fas fa-sign-in-alt" style="margin-right: 8px;"></i> **MASUK UNTUK TRX**
+            </button>
+        </div>
+    </div>
+    
+    <div id="copy-notification">anda telah sukses menyalin</div>
+
+    <div class="main-container" id="main-content-container" style="opacity: 0;"> 
+        <h1 class="payment-title neon-text">PAYMENT PAPIH RASYA</h1>
+        
+        <div class="main-options">
+            <button class="option-btn active" data-content="payment" id="payment-btn">
+                💳 Pembayaran
+            </button>
+            <button class="option-btn" data-content="social" id="social-btn">
+                💬 Info Grup
+            </button>
+            <button class="option-btn" data-content="game" id="game-btn">
+                🧠 Game Santai
+            </button>
+        </div>
+
+        <div id="main-payment" class="main-content active">
+            
+            <div class="tab-menu">
+                <button class="tab-btn active" data-tab="qris">QRIS</button>
+                <button class="tab-btn" data-tab="dana">DANA</button>
+                <button class="tab-btn" data-tab="gopay">GoPay</button>
+                <button class="tab-btn" data-tab="ovo">OVO</button>
+            </div>
+
+            <div class="tab-content active" id="qris">
+                <h2 class="method-title">Bayar via QRIS Universal</h2>
+                <p class="description">Scan QR Code di bawah menggunakan aplikasi pembayaran apa saja.</p>
+                <div class="qris-box">
+                    <img src="#" alt="QRIS Code" class="qris-image" id="qris-image">
+                    <p class="qris-hint">Pastikan Anda memasukkan jumlah yang benar saat memindai.</p>
+                </div>
+                <button class="copy-button" id="copy-qris-url-btn">Salin Tautan QRIS</button> 
+            </div>
+
+            <div class="tab-content" id="dana">
+                <h2 class="method-title">Bayar via DANA</h2>
+                <p class="description">Transfer ke nomor DANA:</p>
+                <div class="account-info">
+                    <div class="number-details">
+                        <span class="label">Nomor DANA:</span>
+                        <span id="dana-number" class="number"></span>
+                        <span class="account-name" id="dana-name"></span>
+                    </div>
+                    <button class="copy-btn" data-target="dana-number">Salin</button>
+                </div>
+                <p class="warning">⚠️ Pastikan nama penerima cocok saat transfer.</p>
+            </div>
+
+            <div class="tab-content" id="gopay">
+                <h2 class="method-title">Bayar via GoPay</h2>
+                <p class="description">Transfer ke nomor GoPay:</p>
+                <div class="account-info">
+                    <div class="number-details">
+                        <span class="label">Nomor GoPay:</span>
+                        <span id="gopay-number" class="number"></span>
+                        <span class="account-name" id="gopay-name"></span>
+                    </div>
+                    <button class="copy-btn" data-target="gopay-number">Salin</button>
+                </div>
+                <p class="warning">⚠️ Periksa kembali nomor GoPay sebelum melakukan pembayaran.</p>
+            </div>
+
+            <div class="tab-content" id="ovo">
+                <h2 class="method-title">Bayar via OVO</h2>
+                <p class="description">Transfer ke nomor OVO:</p>
+                <div class="account-info">
+                    <div class="number-details">
+                        <span class="label">Nomor OVO:</span>
+                        <span id="ovo-number" class="number"></span>
+                        <span class="account-name" id="ovo-name"></span>
+                    </div>
+                    <button class="copy-btn" data-target="ovo-number">Salin</button>
+                </div>
+                <p class="warning">⚠️ Kesalahan transfer bukan tanggung jawab kami.</p>
+            </div>
+
+
+            <p class="footer-note">Pembayaran Anda aman & terverifikasi. Terima kasih!</p>
+        </div>
+
+        <div id="main-social" class="main-content">
+            <h2 class="method-title">Gb Papih Rasya</h2>
+            <p class="description">Gabung ke group papih rasya yang pasti **aman dan beridentitas**!!</p>
+            
+            <a href="#" id="group-link-btn" target="_blank" class="whatsapp-button">
+                <i class="fab fa-whatsapp whatsapp-icon"></i> GABUNG GRUP WHATSAPP
+            </a>
+
+            <h2 class="method-title" style="margin-top: 30px;">Ch Papih Rasya (Info Resmi)</h2>
+            <p class="description">Ikuti channel resmi untuk notifikasi dan pengumuman penting dari Papih Rasya.</p>
+
+            <a href="#" id="channel-link-btn" target="_blank" class="whatsapp-button" style="background: #008069; box-shadow: 0 4px 15px rgba(0, 128, 105, 0.4);">
+                <i class="fab fa-whatsapp whatsapp-icon"></i> IKUTI CHANNEL WHATSAPP
+            </a>
+
+            <p class="footer-note" style="margin-top: 40px;">Kami tunggu kehadiran Anda di komunitas!</p>
+        </div>
+
+        <div id="main-game" class="main-content">
+            <h2 class="method-title">🧠 Asah Otak Santai (No Iklan!)</h2>
+            <p class="description">Latih kecepatan berhitung dan pengetahuan umum Anda dengan 40 soal di setiap kategori. Selamat mencoba!</p>
+            
+            <div class="game-card" id="quiz-game-container">
+                <h3 class="neon-text" style="font-size: 1.4rem; color: var(--neon-blue);">Tes Pengetahuan Umum (40 Soal)</h3>
+                
+                <div id="quiz-game-running">
+                    <div class="quiz-score-board">
+                        <div>Soal ke: <span id="quiz-question-count">1</span> / 40</div>
+                        <div>Skor Benar: <span id="quiz-score">0</span></div>
+                    </div>
+                    
+                    <p class="quiz-question" id="quiz-question">Siapa nama Presiden Pertama Republik Indonesia?</p>
+                    
+                    <div class="quiz-options" id="quiz-options">
+                        </div>
+                    <div class="quiz-result" id="quiz-result" style="display: none;"></div>
+                </div>
+
+                <div id="quiz-game-finished" style="display: none;">
+                    <h3 class="neon-text" style="color: var(--neon-blue); font-size: 1.6rem; margin-bottom: 10px;">🎉 Kuis Selesai! 🎉</h3>
+                    <p style="color: #ccc;">Skor Akhir Anda:</p>
+                    <div id="final-quiz-score">0 / 40</div>
+                    <button id="quiz-reset-btn" class="quiz-game-reset-btn">
+                        <i class="fas fa-redo"></i> Ulangi Tes Kuis 40 Soal
+                    </button>
+                </div>
+
+            </div>
+
+            <div class="game-card" id="math-game-container">
+                <h3 class="neon-text" style="font-size: 1.4rem; color: var(--neon-green);">Tes Kecepatan Berhitung (40 Soal)</h3>
+                
+                <div id="math-game-running">
+                    <div class="math-score-board">
+                        <div>Soal ke: <span id="math-question-count">1</span> / 40</div>
+                        <div>Skor Benar: <span id="math-score">0</span></div>
+                    </div>
+                    <div class="math-question" id="math-question">...</div>
+                    
+                    <input type="number" id="math-answer" class="math-input" placeholder="Masukkan Jawaban" inputmode="numeric">
+                    <button id="math-submit-btn" class="math-submit-btn">Jawab!</button>
+                    <div class="math-result" id="math-result" style="display: none;"></div>
+                </div>
+
+                <div id="math-game-finished" style="display: none; text-align: center;">
+                    <h3 class="neon-text" style="color: var(--neon-purple-secondary); font-size: 1.6rem; margin-bottom: 10px;">🎉 Tes Selesai! 🎉</h3>
+                    <p style="color: #ccc;">Skor Akhir Anda:</p>
+                    <div id="final-math-score">0 / 40</div>
+                    <button id="math-reset-btn" class="math-submit-btn" style="margin-top: 20px;">
+                        <i class="fas fa-redo"></i> Ulangi Tes 40 Soal
+                    </button>
+                </div>
+            </div>
+
+            <p class="footer-note">Selamat mencoba dan jangan sampai *lag* otaknya ya!</p>
+        </div>
+
+    </div>
+    
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const mainContentContainer = document.getElementById('main-content-container');
+            const gateScreen = document.getElementById('gate-screen');
+            const enterButton = document.getElementById('enter-button');
+            const lightningOverlay = document.getElementById('lightning-overlay'); 
+            
+            const mainOptionButtons = document.querySelectorAll('.option-btn');
+            const mainContents = document.querySelectorAll('.main-content');
+            const tabButtons = document.querySelectorAll('.tab-btn');
+            const tabContents = document.querySelectorAll('.tab-content');
+            
+            const copyButtons = document.querySelectorAll('.copy-btn');
+            const qrisCopyButton = document.getElementById('copy-qris-url-btn'); 
+            const notification = document.getElementById('copy-notification');
+            const NOTIFICATION_TIME = 1500; 
+            
+            // --- FUNGSI UNTUK MENGISI DATA KONTAK DARI VARIABEL DI ATAS ---
+            function populateContactData() {
+                // Payment Numbers & Names
+                document.getElementById('dana-number').textContent = CONTACT_DATA.danaNumber;
+                document.getElementById('dana-name').textContent = `Inisial Akun: ${CONTACT_DATA.danaName}`;
+                
+                document.getElementById('ovo-number').textContent = CONTACT_DATA.ovoNumber;
+                document.getElementById('ovo-name').textContent = `Nama Akun: ${CONTACT_DATA.ovoName}`;
+
+                document.getElementById('gopay-number').textContent = CONTACT_DATA.gopayNumber;
+                document.getElementById('gopay-name').textContent = `Nama Akun: ${CONTACT_DATA.gopayName}`;
+                
+                // QRIS Image Source
+                document.getElementById('qris-image').src = CONTACT_DATA.qrisLink;
+                
+                // Social Links
+                document.getElementById('group-link-btn').href = CONTACT_DATA.groupLink;
+                document.getElementById('channel-link-btn').href = CONTACT_DATA.channelLink;
+
+                // Profile Pic
+                document.getElementById('profile-pic').src = CONTACT_DATA.logoUrl;
+            }
+            
+            // Panggil fungsi ini saat DOM siap
+            populateContactData();
+
+
+            // --- FUNGSI UTAMA PETIR & GATE ---
+            function triggerLightningFlash() {
+                if (gateScreen.style.display === 'none' || gateScreen.style.opacity === '0') return;
+                lightningOverlay.style.opacity = '1';
+                lightningOverlay.style.animation = 'flash-lightning 0.3s ease-out'; 
+                setTimeout(() => {
+                    lightningOverlay.style.animation = 'none';
+                    lightningOverlay.style.opacity = '0';
+                }, 300);
+            }
+            
+            enterButton.addEventListener('click', () => {
+                gateScreen.style.opacity = '0';
+                setTimeout(() => {
+                    gateScreen.style.display = 'none';
+                    lightningOverlay.style.display = 'none'; 
+                }, 500); 
+
+                mainContentContainer.style.opacity = '1';
+                activateMainOptionHandlers();
+                activateTabHandlers();
+                
+                initQuizGame(); 
+                resetMathGame(); 
+            });
+
+            // --- FUNGSI TAB UTAMA (MAIN OPTIONS) ---
+            function activateMainOptionHandlers() {
+                mainOptionButtons.forEach(button => {
+                    button.onclick = () => { 
+                        mainOptionButtons.forEach(btn => btn.classList.remove('active'));
+                        mainContents.forEach(content => content.classList.remove('active'));
+                        button.classList.add('active');
+                        const targetId = `main-${button.getAttribute('data-content')}`;
+                        document.getElementById(targetId).classList.add('active');
+                        document.querySelector('.main-container').scrollIntoView({ behavior: 'smooth', block: 'start' });
+                        
+                        if(button.getAttribute('data-content') === 'payment') {
+                             const qrisTabBtn = document.querySelector('.tab-btn[data-tab="qris"]');
+                             const qrisTabContent = document.getElementById('qris');
+                             document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
+                             document.querySelectorAll('.tab-content').forEach(content => content.classList.remove('active'));
+                             if(qrisTabBtn) qrisTabBtn.classList.add('active');
+                             if(qrisTabContent) qrisTabContent.classList.add('active');
+                        }
+                    };
+                });
+            }
+
+            // --- FUNGSI TAB PAYMENT (QRIS, DANA, GOPAY, OVO) ---
+            function activateTabHandlers() {
+                tabButtons.forEach(button => {
+                    button.onclick = () => {
+                        tabButtons.forEach(btn => btn.classList.remove('active'));
+                        tabContents.forEach(content => content.classList.remove('active'));
+                        button.classList.add('active');
+                        const targetId = button.getAttribute('data-tab');
+                        const targetElement = document.getElementById(targetId);
+                        if (targetElement) {
+                            targetElement.classList.add('active');
+                        }
+                    };
+                });
+            }
+
+
+            // --- FUNGSI SALIN TEKS & NOTIFIKASI ---
+            function showNotification() {
+                notification.classList.add('show'); 
+                setTimeout(() => {
+                    notification.classList.remove('show');
+                }, NOTIFICATION_TIME);
+            }
+
+            // 1. Salin Nomor (DANA, GoPay, OVO)
+            copyButtons.forEach(button => {
+                button.addEventListener('click', async () => {
+                    const targetId = button.getAttribute('data-target');
+                    const targetElement = document.getElementById(targetId);
+                    
+                    if (!targetElement) {
+                        alert(`Error: Elemen dengan ID "${targetId}" tidak ditemukan.`);
+                        return;
+                    }
+
+                    const textToCopy = targetElement.textContent.trim();
+                    try {
+                        await navigator.clipboard.writeText(textToCopy);
+                        showNotification(); 
+                    } catch (err) {
+                        console.error('Gagal menyalin:', err);
+                        alert(`Gagal menyalin: ${textToCopy}. Pastikan Anda mengizinkan akses clipboard.`);
+                    }
+                });
+            });
+
+            // 2. Salin Link QRIS
+            if (qrisCopyButton) {
+                qrisCopyButton.addEventListener('click', async () => {
+                    try {
+                        await navigator.clipboard.writeText(CONTACT_DATA.qrisLink);
+                        showNotification(); 
+                    } catch (err) {
+                        console.error('Gagal menyalin link QRIS:', err);
+                        alert(`Gagal menyalin link: ${CONTACT_DATA.qrisLink}. Pastikan Anda mengizinkan akses clipboard.`);
+                    }
+                });
+            }
+
+
+            // ========================================================
+            // --- LOGIKA QUIZ GAME (40 SOAL) ---
+            // ========================================================
+            
+            const quizData = [
+                { question: "Siapa Presiden Pertama RI?", options: ["Sukarno", "Soeharto", "BJ Habibie"], answer: "Sukarno" },
+                { question: "Tahun berapa Indonesia merdeka?", options: ["1942", "1945", "1948"], answer: "1945" },
+                { question: "Apa ibu kota negara Indonesia?", options: ["Bandung", "Surabaya", "Jakarta"], answer: "Jakarta" },
+                { question: "Siapa wakil presiden pertama RI?", options: ["Mohammad Hatta", "Adam Malik", "Hamzah Haz"], answer: "Mohammad Hatta" },
+                { question: "Bendera Negara Indonesia adalah...", options: ["Merah-Putih", "Putih-Merah", "Kuning-Hijau"], answer: "Merah-Putih" },
+                { question: "Lagu kebangsaan Indonesia?", options: ["Garuda Pancasila", "Indonesia Raya", "Halo-Halo Bandung"], answer: "Indonesia Raya" },
+                { question: "Sila ke-3 Pancasila berbunyi...", options: ["Kerakyatan", "Persatuan Indonesia", "Keadilan Sosial"], answer: "Persatuan Indonesia" },
+                { question: "Pahlawan wanita dari Aceh?", options: ["RA Kartini", "Cut Nyak Dien", "Dewi Sartika"], answer: "Cut Nyak Dien" },
+                { question: "Berapa jumlah provinsi di Indonesia (saat ini)?", options: ["30", "34", "38"], answer: "38" },
+                { question: "Pulau terbesar di Indonesia?", options: ["Jawa", "Sumatera", "Kalimantan"], answer: "Kalimantan" },
+                { question: "Julukan kota 'Paris van Java'?", options: ["Jakarta", "Bandung", "Semarang"], answer: "Bandung" },
+                { question: "Monumen Nasional (Monas) ada di kota?", options: ["Yogyakarta", "Jakarta", "Medan"], answer: "Jakarta" },
+                { question: "Alat musik tradisional dari Jawa Barat?", options: ["Suling", "Angklung", "Gamelan"], answer: "Angklung" },
+                { question: "Batas waktu maksimal menjabat Presiden RI?", options: ["Satu periode", "Dua periode", "Tiga periode"], answer: "Dua periode" },
+                { question: "Mata uang resmi Indonesia?", options: ["Rupiah", "Ringgit", "Dolar"], answer: "Rupiah" },
+                { question: "Nama candi Buddha terbesar di dunia?", options: ["Prambanan", "Borobudur", "Taman Sari"], answer: "Borobudur" },
+                { question: "Organisasi ASEAN dibentuk tahun?", options: ["1967", "1975", "1980"], answer: "1967" },
+                { question: "Presiden RI ke-3?", options: ["Gus Dur", "Megawati", "BJ Habibie"], answer: "BJ Habibie" },
+                { question: "Dasar negara Indonesia?", options: ["UUD 1945", "Pancasila", "Bhinneka Tunggal Ika"], answer: "Pancasila" },
+                { question: "Tari daerah dari Bali?", options: ["Tari Saman", "Tari Piring", "Tari Pendet"], answer: "Tari Pendet" },
+                { question: "Siapa Presiden RI ke-7?", options: ["SBY", "Jokowi", "Megawati"], answer: "Jokowi" },
+                { question: "Semboyan negara Indonesia?", options: ["Merdeka atau Mati", "Bhinneka Tunggal Ika", "Bersatu Kita Teguh"], answer: "Bhinneka Tunggal Ika" },
+                { question: "Warna lambang Padi dan Kapas di Pancasila?", options: ["Kuning dan Hijau", "Putih dan Hijau", "Emas dan Putih"], answer: "Putih dan Hijau" },
+                { question: "Pulau yang dikenal sebagai 'Pulau Dewata'?", options: ["Lombok", "Bali", "Nias"], answer: "Bali" },
+                { question: "Gunung tertinggi di Pulau Jawa?", options: ["Semeru", "Rinjani", "Kerinci"], answer: "Semeru" },
+                { question: "Bapak Proklamator Indonesia?", options: ["Sukarno & Hatta", "Sutomo & Hatta", "Sukarno & Soeharto"], answer: "Sukarno & Hatta" },
+                { question: "Teks Proklamasi dibacakan di jalan...", options: ["Diponegoro 56", "Pegangsaan Timur 56", "Sudirman 10"], answer: "Pegangsaan Timur 56" },
+                { question: "Makanan khas dari Palembang?", options: ["Rendang", "Empek-Empek", "Sate Padang"], answer: "Empek-Empek" },
+                { question: "Presiden yang menjabat paling lama?", options: ["Sukarno", "Soeharto", "SBY"], answer: "Soeharto" },
+                { question: "Hewan endemik dari Pulau Komodo?", options: ["Orangutan", "Komodo", "Anoa"], answer: "Komodo" },
+                { question: "Siapa yang mengetik naskah proklamasi?", options: ["Sukarni", "Sayuti Melik", "Achmad Soebardjo"], answer: "Sayuti Melik" },
+                { question: "Peristiwa Rengasdengklok terjadi pada tahun?", options: ["1945", "1947", "1949"], answer: "1945" },
+                { question: "Provinsi paling timur di Indonesia?", options: ["Maluku", "NTT", "Papua"], answer: "Papua" },
+                { question: "Kota yang dikenal sebagai Kota Pelajar?", options: ["Semarang", "Yogyakarta", "Malang"], answer: "Yogyakarta" },
+                { question: "Presiden RI ke-4?", options: ["Megawati", "Gus Dur", "SBY"], answer: "Gus Dur" },
+                { question: "Simbol sila pertama Pancasila?", options: ["Pohon Beringin", "Bintang", "Rantai"], answer: "Bintang" },
+                { question: "Nama kabinet pada masa Orde Baru?", options: ["Djuanda", "Pembangunan", "Kerja"], answer: "Pembangunan" },
+                { question: "Pendiri organisasi Budi Utomo?", options: ["Ki Hajar Dewantara", "dr. Sutomo", "Mohammad Yamin"], answer: "dr. Sutomo" },
+                { question: "Nama bandara internasional di Jakarta?", options: ["Halim Perdanakusuma", "Soekarno-Hatta", "Juanda"], answer: "Soekarno-Hatta" },
+                { question: "Kepanjangan dari DPR?", options: ["Dewan Perwakilan Rakyat", "Dewan Pertimbangan Rakyat", "Dewan Permusyawaratan Rakyat"], answer: "Dewan Perwakilan Rakyat" }
+            ];
+            
+            let quizCurrentIndex = 0;
+            let quizScore = 0;
+            const MAX_QUIZ_QUESTIONS = quizData.length;
+
+            const quizGameRunningDiv = document.getElementById('quiz-game-running');
+            const quizGameFinishedDiv = document.getElementById('quiz-game-finished');
+            const quizQuestionCountSpan = document.getElementById('quiz-question-count');
+            const quizScoreSpan = document.getElementById('quiz-score');
+            const finalQuizScoreDiv = document.getElementById('final-quiz-score');
+            const quizResetBtn = document.getElementById('quiz-reset-btn');
+
+            const quizOptionsDiv = document.getElementById('quiz-options');
+            const quizResultDiv = document.getElementById('quiz-result');
+            const quizQuestionDiv = document.getElementById('quiz-question');
+
+
+            function initQuizGame() {
+                quizCurrentIndex = 0;
+                quizScore = 0;
+                quizScoreSpan.textContent = quizScore;
+                quizGameFinishedDiv.style.display = 'none';
+                quizGameRunningDiv.style.display = 'block';
+                showNextQuizQuestion();
+                quizResetBtn.removeEventListener('click', initQuizGame);
+                quizResetBtn.addEventListener('click', initQuizGame);
+            }
+
+            function showNextQuizQuestion() {
+                if (quizCurrentIndex >= MAX_QUIZ_QUESTIONS) {
+                    finishQuizGame();
+                    return;
+                }
+                
+                const currentQuestion = quizData[quizCurrentIndex];
+                
+                quizQuestionCountSpan.textContent = quizCurrentIndex + 1;
+                quizQuestionDiv.textContent = currentQuestion.question;
+                quizResultDiv.style.display = 'none';
+                quizResultDiv.innerHTML = ''; 
+                
+                // Hapus opsi lama
+                quizOptionsDiv.innerHTML = '';
+                
+                // Render opsi baru
+                currentQuestion.options.forEach((option, index) => {
+                    const button = document.createElement('button');
+                    // Label A, B, C
+                    const label = String.fromCharCode(65 + index); 
+                    button.textContent = `${label}. ${option}`;
+                    button.setAttribute('data-answer', option);
+                    
+                    button.onclick = (e) => handleQuizAnswer(e, currentQuestion.answer); 
+                    quizOptionsDiv.appendChild(button);
+                });
+            }
+
+            function handleQuizAnswer(event, correctAnswer) {
+                // Nonaktifkan semua tombol setelah satu tombol diklik
+                quizOptionsDiv.querySelectorAll('button').forEach(btn => btn.style.pointerEvents = 'none');
+
+                const selectedAnswer = event.target.getAttribute('data-answer');
+                let isCorrect = false;
+
+                event.target.classList.add('incorrect');
+                
+                let correctButton = null;
+                quizOptionsDiv.querySelectorAll('button').forEach(btn => {
+                    if (btn.getAttribute('data-answer') === correctAnswer) {
+                        correctButton = btn;
+                    }
+                });
+
+                if (selectedAnswer === correctAnswer) {
+                    isCorrect = true;
+                    quizScore++;
+                    quizScoreSpan.textContent = quizScore;
+                    event.target.classList.remove('incorrect');
+                    event.target.classList.add('correct');
+                    quizResultDiv.style.color = 'var(--neon-green)';
+                    quizResultDiv.textContent = '✅ Benar!';
+                    
+                } else {
+                    if (correctButton) {
+                        correctButton.classList.add('correct'); 
+                    }
+                    quizResultDiv.style.color = 'var(--neon-red)';
+                    quizResultDiv.textContent = `❌ Salah! Jawaban: ${correctAnswer}.`;
+                }
+
+                quizResultDiv.style.display = 'block';
+                quizCurrentIndex++; 
+                
+                // Lanjutkan ke soal berikutnya setelah jeda
+                setTimeout(showNextQuizQuestion, isCorrect ? 500 : 1000); 
+            }
+
+            function finishQuizGame() {
+                quizGameRunningDiv.style.display = 'none';
+                finalQuizScoreDiv.textContent = `${quizScore} / ${MAX_QUIZ_QUESTIONS}`;
+                quizGameFinishedDiv.style.display = 'block';
+            }
+
+
+            // ========================================================
+            // --- LOGIKA MATH GAME (40 SOAL CAMPURAN) ---
+            // ========================================================
+            
+            const MAX_QUESTIONS = 40;
+            let mathCurrentQuestion = 0;
+            let mathCorrectScore = 0;
+            let mathCurrentAnswer = 0;
+
+            const mathGameRunningDiv = document.getElementById('math-game-running');
+            const mathGameFinishedDiv = document.getElementById('math-game-finished');
+            const mathQuestionCountSpan = document.getElementById('math-question-count');
+            const mathScoreSpan = document.getElementById('math-score');
+            const mathQuestionDiv = document.getElementById('math-question');
+            const mathAnswerInput = document.getElementById('math-answer');
+            const mathSubmitBtn = document.getElementById('math-submit-btn');
+            const mathResultDiv = document.getElementById('math-result');
+            const finalMathScoreDiv = document.getElementById('final-math-score');
+            const mathResetBtn = document.getElementById('math-reset-btn');
+
+
+            function getRandomInt(min, max) {
+                return Math.floor(Math.random() * (max - min + 1)) + min;
+            }
+
+            function generateNewMathQuestion() {
+                if (mathCurrentQuestion >= MAX_QUESTIONS) {
+                    finishMathGame();
+                    return;
+                }
+                
+                mathCurrentQuestion++;
+                mathQuestionCountSpan.textContent = mathCurrentQuestion;
+                mathResultDiv.style.display = 'none';
+                mathResultDiv.textContent = '';
+                mathAnswerInput.value = '';
+                mathAnswerInput.focus();
+
+                const operation = getRandomInt(1, 4); 
+                let num1, num2, symbol;
+
+                switch (operation) {
+                    case 1: // Penjumlahan
+                        num1 = getRandomInt(10, 100);
+                        num2 = getRandomInt(10, 100);
+                        symbol = '+';
+                        mathCurrentAnswer = num1 + num2;
+                        break;
+                    case 2: // Pengurangan
+                        num1 = getRandomInt(20, 100);
+                        num2 = getRandomInt(1, num1 - 10); 
+                        symbol = '-';
+                        mathCurrentAnswer = num1 - num2;
+                        break;
+                    case 3: // Perkalian
+                        num1 = getRandomInt(2, 15);
+                        num2 = getRandomInt(2, 15);
+                        symbol = 'x';
+                        mathCurrentAnswer = num1 * num2;
+                        break;
+                    case 4: // Pangkatan
+                        num1 = getRandomInt(2, 12);
+                        num2 = 2; 
+                        symbol = '^';
+                        mathCurrentAnswer = Math.pow(num1, num2);
+                        break;
+                }
+
+                mathQuestionDiv.textContent = `${num1} ${symbol} ${num2}${symbol === '^' ? '' : ''} = ?`;
+            }
+
+            function handleMathSubmit() {
+                if (mathCurrentQuestion > MAX_QUESTIONS) return; 
+
+                const userAnswer = parseInt(mathAnswerInput.value.trim());
+
+                if (isNaN(userAnswer)) {
+                    mathResultDiv.style.color = 'var(--neon-red)';
+                    mathResultDiv.textContent = '❌ Masukkan Angka!';
+                    mathResultDiv.style.display = 'block';
+                    return;
+                }
+
+                if (userAnswer === mathCurrentAnswer) {
+                    mathCorrectScore++;
+                    mathScoreSpan.textContent = mathCorrectScore;
+                    mathResultDiv.style.color = 'var(--neon-green)';
+                    mathResultDiv.textContent = '✅ Benar!';
+                    
+                    setTimeout(generateNewMathQuestion, 500); 
+                } else {
+                    mathResultDiv.style.color = 'var(--neon-red)';
+                    mathResultDiv.textContent = `❌ Salah! Jawaban: ${mathCurrentAnswer}.`;
+                    
+                    setTimeout(generateNewMathQuestion, 1000); 
+                }
+                mathResultDiv.style.display = 'block';
+            }
+            
+            function finishMathGame() {
+                mathGameRunningDiv.style.display = 'none';
+                finalMathScoreDiv.textContent = `${mathCorrectScore} / ${MAX_QUESTIONS}`;
+                mathGameFinishedDiv.style.display = 'block';
+            }
+
+            function resetMathGame() {
+                mathCurrentQuestion = 0;
+                mathCorrectScore = 0;
+                mathScoreSpan.textContent = '0';
+                mathQuestionCountSpan.textContent = '1';
+                mathGameFinishedDiv.style.display = 'none';
+                mathGameRunningDiv.style.display = 'block';
+                generateNewMathQuestion();
+            }
+
+            mathSubmitBtn.addEventListener('click', handleMathSubmit);
+            mathAnswerInput.addEventListener('keydown', (e) => {
+                if (e.key === 'Enter') {
+                    handleMathSubmit();
+                }
+                // Handle keyboard input: only allow numbers, backspace, and delete
+                const allowedKeys = ['Backspace', 'Delete', 'ArrowLeft', 'ArrowRight', 'Tab'];
+                if (e.key === '-' && e.target.value.indexOf('-') === -1) {
+                    return; // Allow a single negative sign
+                }
+                if (isNaN(e.key) && !allowedKeys.includes(e.key)) {
+                    e.preventDefault();
+                }
+            });
+            mathResetBtn.addEventListener('click', resetMathGame);
+
+            // --- FUNGSI RAINDROP (Dibiarkan sama) ---
+            const numberOfRaindrops = 120; 
+            const rainContainer = document.getElementById('rain-canvas'); 
+
+            for (let i = 0; i < numberOfRaindrops; i++) { 
+                const drop = document.createElement('div');
+                drop.classList.add('raindrop');
+                const width = Math.random() * 2 + 1; 
+                const height = Math.random() * 25 + 15; 
+                drop.style.setProperty('--width', `${width}px`);
+                drop.style.setProperty('--height', `${height}px`);
+                drop.style.left = `${Math.random() * 100}%`;
+                const animationDuration = Math.random() * 0.7 + 0.3; 
+                drop.style.animationDuration = `${animationDuration}s`;
+                const animationDelay = Math.random() * 2; 
+                drop.style.animationDelay = `${animationDelay}s`;
+                const opacity = Math.random() * 0.4 + 0.4;
+                drop.style.setProperty('--opacity', `${opacity}`);
+                const xShift = Math.random() * 100 - 50;
+                drop.style.setProperty('--x-shift', `${xShift}px`);
+                rainContainer.appendChild(drop);
+            }
+        });
+    </script>
+</body>
+</html>
